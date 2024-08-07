@@ -20,7 +20,7 @@ pipeline {
         useRepository: 'https://github.com/knoeurnup/app_1.git',  // Specify the repository URL if needed
         branch: '',               // Filter for branches (optional)
         tagFilter: '',            // Filter for tags (optional)
-        sortMode: 'ASCENDING_SMART', // Sorting mode
+        sortMode: 'DESCENDING_SMART', // Sorting mode
         selectedValue: 'TOP'      // Default selected value
       )
     }
