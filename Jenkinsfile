@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    // parameters {
-    //     string(name: 'PVERSION', defaultValue: 'v1.0.0', description: 'Version number')
-    // }
     parameters {
       gitParameter(
         name: 'BRANCH',           // Name of the parameter
@@ -29,22 +26,22 @@ pipeline {
     }
     stages {
         stage('Checkout') {
-            steps {
-                // Checkout the selected branch
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: "*/${params.BRANCH}"]],
-                    userRemoteConfigs: [[url: 'https://github.com/knoeurnup/app_1.git']]
-                ])
-            }
+          steps {
+              // Checkout the selected branch
+              checkout([
+                  $class: 'GitSCM',
+                  branches: [[name: "*/${params.BRANCH}"]],
+                  userRemoteConfigs: [[url: 'https://github.com/knoeurnup/app_1.git']]
+              ])
+          }
         }
 
-         stage('Build') {
-            steps {
-                echo "Building branch: ${params.BRANCH}"
-                // Add your build steps here
-                echo "Building branch: ${params.TAGS}"
-            }
+        stage('Build') {
+          steps {
+            echo "Building branch: ${params.BRANCH}"
+            // Add your build steps here
+            echo "Building branch: ${params.TAGS}"
+          }
         }
     }
 }
