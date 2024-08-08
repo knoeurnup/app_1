@@ -1,18 +1,10 @@
-FROM node:14
-#RUN apt-get update \
-#   && apt-get install -y ffmpeg \
-#    && apt-get install -y --allow-unauthenticated \
-#        libc6-dev \
-#        libgdiplus \
-#        libx11-dev \
-#     && rm -rf /var/lib/apt/lists/*
+FROM node:8
 
 # Define build arguments
 # ARG APP_VERSION
 
 WORKDIR /usr/src/app
-COPY package.json ./
+COPY . ./
 RUN npm install
-COPY . .
-EXPOSE 8080
+EXPOSE 80
 CMD [ "node", "index.js" ]
